@@ -1,0 +1,88 @@
+:host {
+  display: flex;
+  justify-content: center;
+}
+
+.grid {
+  max-width: 1400px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(5, minmax(140px, auto));
+  gap: 8px;
+  padding: 8px;
+  min-height: 100vh;
+
+  grid-template-areas:
+    "hero  hero  hero  hero  hero  hero  hero  hero  hero  hero  hero  hero"
+    "hero  hero  hero  hero  hero  hero  hero  hero  hero  hero  hero  hero"
+    "cv    cv    cv    exp   exp   exp   exp   exp   edu   edu   edu   edu"
+    "proj  proj  proj  proj  proj  proj  proj  musa  musa  musa  musa  musa"
+    "stck  stck  stck  stck  stck  cont  cont  cont  cont  cont  cont  cont";
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  border-radius: 2px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.tile--stack,
+.tile--contact,
+.tile--hero {
+  cursor: default;
+
+  &:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+.tile--hero       { grid-area: hero; }
+.tile--musarum    { grid-area: musa; }
+.tile--stack      { grid-area: stck; }
+.tile--education  { grid-area: edu; }
+.tile--contact    { grid-area: cont; }
+.tile--projects   { grid-area: proj; }
+.tile--cv         { grid-area: cv; }
+.tile--experience { grid-area: exp; }
+
+/* TABLET */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-rows: auto;
+    grid-template-areas:
+      "hero  hero  hero  hero  hero  hero  hero  hero  hero  hero  hero  hero"
+      "musa  musa  musa  musa  musa  musa  exp   exp   exp   exp   exp   exp"
+      "edu   edu   edu   edu   edu   edu   proj  proj  proj  proj  proj  proj"
+      "stck  stck  stck  stck  stck  stck  cont  cont  cont  cont  cont  cont"
+      "cv    cv    cv    cv    cv    cv    cv    cv    cv    cv    cv    cv";
+  }
+}
+
+/* MÓVIL — una columna apilada */
+@media (max-width: 768px) {
+  .grid {
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+    gap: 4px;
+    min-height: auto;
+  }
+
+  .tile {
+    min-height: 200px;
+  }
+
+  .tile--hero {
+    min-height: auto;
+  }
+}

@@ -1,0 +1,64 @@
+:host {
+  background-color: #4e2e2e;
+  color: var(--cream);
+  display: block;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 22px;
+  height: 100%;
+  position: relative;
+  color: inherit;
+}
+
+.kicker {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+h3 {
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 0.5em;
+
+  em {
+    color: var(--cream);
+    font-style: italic;
+  }
+}
+
+.foot {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.more {
+  position: absolute;
+  bottom: 22px;
+  right: 22px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.wrapper:hover .more {
+  opacity: 0.9;
+  transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+  h3 { font-size: 28px; }
+}

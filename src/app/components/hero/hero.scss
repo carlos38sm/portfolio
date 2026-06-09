@@ -1,0 +1,143 @@
+:host {
+  background: var(--bone);
+  padding: 32px;
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.kicker {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  opacity: 0.7;
+}
+
+.name {
+  font-size: 130px;
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.025em;
+  margin: 16px 0;
+
+  em {
+    color: var(--terracotta);
+    font-style: italic;
+  }
+}
+
+.role {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  opacity: 0.65;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.badge {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  background: var(--ink);
+  color: var(--bone);
+  padding: 5px 10px;
+}
+
+.location {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  opacity: 0.7;
+}
+
+.social {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  align-items: center;
+
+  a {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.4;
+    transition: opacity 0.2s ease;
+
+    &:hover { opacity: 1; }
+  }
+
+  span {
+    opacity: 0.3;
+    font-size: 10px;
+  }
+}
+
+.about {
+  max-width: 320px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+}
+
+.about-text {
+  font-size: 18px;
+  line-height: 1.6;
+  opacity: 0.85;
+
+  em {
+    color: var(--terracotta);
+    font-style: normal;
+    font-weight: 500;
+  }
+}
+
+.about-sub {
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.5;
+  margin-top: 16px;
+  font-style: italic;
+}
+
+/* TABLET */
+@media (max-width: 1024px) {
+  .name { font-size: 90px; }
+  .about { max-width: 260px; }
+  .about-text { font-size: 16px; }
+}
+
+/* MÓVIL */
+@media (max-width: 768px) {
+  :host {
+    flex-direction: column !important;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 32px 24px;
+  }
+
+  .name { font-size: 64px; }
+  .role { font-size: 18px; }
+
+  .about {
+    max-width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .name { font-size: 48px; }
+}

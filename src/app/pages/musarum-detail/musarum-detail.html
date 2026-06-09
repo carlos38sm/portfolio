@@ -1,0 +1,174 @@
+<section class="page">
+
+    <!-- HERO -->
+    <header class="hero">
+        <a class="back" routerLink="/">← Volver al mosaico</a>
+        <span class="kicker">— Obra principal · Folio I —</span>
+        <h1><em>Musarum.</em></h1>
+        <p class="subtitle">Ecosistema de streaming musical autoalojado con arquitectura cliente-servidor.</p>
+        <div class="meta-row">
+            <span class="badge">TFG · 10/10</span>
+            <span class="badge">2026</span>
+            <span class="badge">Proyecto individual</span>
+        </div>
+        <div class="chips">
+            <span>Java 21</span>
+            <span>Spring Boot</span>
+            <span>Angular</span>
+            <span>MariaDB</span>
+            <span>Docker</span>
+            <span>Tailscale VPN</span>
+        </div>
+    </header>
+
+    <!-- QUÉ ES -->
+    <article class="section">
+        <span class="section-kicker">— Qué es —</span>
+        <h2>Tu música, tu servidor, tu control.</h2>
+        <p>Musarum nace de una necesidad real: gestionar una audioteca musical privada con la experiencia de un servicio
+            de streaming moderno, sin depender de plataformas de terceros ni perder la propiedad de los archivos.</p>
+        <p>El resultado es un ecosistema completo que permite subir, organizar, enriquecer y reproducir música en
+            streaming desde cualquier dispositivo a través de una red privada virtual, sin exponer puertos a internet.
+        </p>
+    </article>
+
+    <!-- CAPTURAS -->
+    <div class="gallery">
+        <div class="gallery-item gallery-item--wide">
+            <img src="/assets/home.png" alt="Pantalla principal de Musarum" />
+            <span class="caption">Pantalla principal — Diseño mudéjar con ornamentación geométrica andalusí</span>
+        </div>
+        <div class="gallery-item">
+            <img src="/assets/login.png" alt="Login de Musarum" />
+            <span class="caption">Acceso a la plataforma</span>
+        </div>
+        <div class="gallery-item">
+            <img src="/assets/albums.png" alt="Vista de álbumes" />
+            <span class="caption">Catálogo de álbumes con portadas enriquecidas</span>
+        </div>
+    </div>
+
+    <!-- ARQUITECTURA -->
+    <article class="section">
+        <span class="section-kicker">— Arquitectura —</span>
+        <h2>Cliente-servidor RESTful sin estado.</h2>
+        <p>El backend expone una API REST consumida por un frontend Angular y una app de escritorio Electron. No hay
+            sesiones en memoria: cada petición lleva un token JWT que se valida criptográficamente antes de llegar al
+            controlador.</p>
+
+        <div class="arch-grid">
+            <div class="arch-card">
+                <h3>Backend</h3>
+                <p>Java 21 + Spring Boot. Arquitectura por capas: Controllers → Services → Repositories. Transacciones
+                    con &#64;Transactional, caché con Caffeine, documentación con Swagger.</p>
+            </div>
+            <div class="arch-card">
+                <h3>Frontend</h3>
+                <p>Angular con componentes standalone, lazy loading por ruta, guards de autenticación y rol, interceptor
+                    HTTP para inyectar JWT automáticamente.</p>
+            </div>
+            <div class="arch-card">
+                <h3>Persistencia</h3>
+                <p>MariaDB con Spring Data JPA. Índices estratégicos, lazy loading con &#64;EntityGraph para evitar N+1,
+                    proyecciones para consultas ligeras.</p>
+            </div>
+            <div class="arch-card">
+                <h3>Infraestructura</h3>
+                <p>Docker Compose orquesta backend + base de datos. Tailscale VPN cifra el tráfico extremo a extremo sin
+                    exponer puertos. Tres instancias de respaldo.</p>
+            </div>
+        </div>
+    </article>
+
+    <!-- FUNCIONALIDADES -->
+    <article class="section">
+        <span class="section-kicker">— Qué hace —</span>
+        <h2>No es un reproductor. Es un ecosistema.</h2>
+
+        <div class="features">
+            <div class="feature">
+                <h3>Streaming con Range Requests</h3>
+                <p>HTTP 206 Partial Content. El navegador solicita fragmentos del fichero, permitiendo seek instantáneo
+                    sin descarga completa.</p>
+            </div>
+            <div class="feature">
+                <h3>Enriquecimiento automático</h3>
+                <p>Al subir o escanear música, el sistema consulta Deezer, MusicBrainz, iTunes y LRCLib para completar
+                    portadas, biografías, géneros, BPM y letras sincronizadas.</p>
+            </div>
+            <div class="feature">
+                <h3>Seguridad por roles</h3>
+                <p>Tres niveles jerárquicos (Listener, Contributor, Owner) con JWT + &#64;PreAuthorize. BCrypt para
+                    contraseñas. Bloqueo automático tras 4 intentos fallidos.</p>
+            </div>
+            <div class="feature">
+                <h3>Analítica personal</h3>
+                <p>Cada reproducción se registra. El usuario consulta sus artistas, géneros y canciones más escuchadas,
+                    horas pico y calendario anual — todo calculado en SQL.</p>
+            </div>
+            <div class="feature">
+                <h3>Modos de reproducción inteligentes</h3>
+                <p>Además de aleatorio y bucle, modos por tonalidad (rueda de Camelot) y BPM que encadenan pistas como
+                    lo haría un DJ.</p>
+            </div>
+            <div class="feature">
+                <h3>Escaneo masivo</h3>
+                <p>El Owner escanea un directorio completo del host. Progreso en tiempo real con AtomicInteger. Sin
+                    duplicar archivos en disco — solo se indexan rutas.</p>
+            </div>
+        </div>
+    </article>
+
+    <!-- DECISIONES -->
+    <article class="section">
+        <span class="section-kicker">— Por qué así —</span>
+        <h2>Decisiones técnicas.</h2>
+
+        <div class="decisions">
+            <div class="decision">
+                <h3>¿Por qué stateless?</h3>
+                <p>Sin sesiones en servidor, cada instancia es independiente. Escalar es añadir contenedores, no
+                    sincronizar estado.</p>
+            </div>
+            <div class="decision">
+                <h3>¿Por qué VPN en vez de HTTPS?</h3>
+                <p>El servidor es doméstico. Exponer puertos a internet invita a ataques. Tailscale cifra todo el
+                    tráfico y solo permite acceso a dispositivos autorizados.</p>
+            </div>
+            <div class="decision">
+                <h3>¿Por qué no guardar audio en la BD?</h3>
+                <p>Persistir ficheros binarios en MariaDB degrada el rendimiento. Musarum almacena rutas relativas y
+                    sirve los archivos desde volúmenes Docker.</p>
+            </div>
+            <div class="decision">
+                <h3>¿Por qué Caffeine y no Redis?</h3>
+                <p>Para un servidor de un solo nodo, una caché en proceso es más rápida y sencilla. 15 min de TTL y 500
+                    entradas cubren el caso de uso sin infraestructura extra.</p>
+            </div>
+        </div>
+    </article>
+
+    <!-- IDENTIDAD VISUAL -->
+    <article class="section">
+        <span class="section-kicker">— Diseño —</span>
+        <h2>Identidad mudéjar.</h2>
+        <p>El primer diseño era un clon visual de Spotify. Lo descarté por falta de personalidad. La identidad final se
+            inspiró en la arquitectura andalusí: paleta de tonos oscuros con ornamentación geométrica en oro envejecido,
+            fondo ink, textos en crema y acentos en terracota.</p>
+        <p>La misma filosofía que aplico en este portfolio — coherencia visual entre lo que construyo y cómo me
+            presento.</p>
+    </article>
+
+    <!-- ENLACES -->
+    <div class="links-section">
+        <a href="https://github.com/carlos38sm" target="_blank" rel="noopener" class="link-card">
+            <span class="link-label">Repositorio</span>
+            <span class="link-value">GitHub →</span>
+        </a>
+        <a href="assets/Memoria_CarlosSanchezMiranda.pdf" download class="link-card">
+            <span class="link-label">Documentación</span>
+            <span class="link-value">Memoria PDF →</span>
+        </a>
+    </div>
+
+</section>

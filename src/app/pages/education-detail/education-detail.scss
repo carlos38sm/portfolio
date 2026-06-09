@@ -1,0 +1,234 @@
+.page {
+    min-height: 100vh;
+    background: var(--bone);
+    padding: 48px 32px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Header */
+.back {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink);
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.kicker {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    display: block;
+    margin: 32px 0 8px;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 48px;
+
+    em {
+        color: var(--terracotta);
+        font-style: italic;
+    }
+}
+
+/* Cards */
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.card {
+    background: var(--bone-2);
+    padding: 28px;
+    border-radius: 3px;
+    transition: transform 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+}
+
+.card--main {
+    background: var(--teal);
+    color: var(--cream);
+    padding: 36px;
+
+    .institution {
+        opacity: 0.7;
+    }
+
+    .note {
+        opacity: 0.85;
+    }
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+
+.dates {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    opacity: 0.5;
+}
+
+.card h2 {
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 4px;
+}
+
+.card--main h2 {
+    font-size: 36px;
+}
+
+.institution {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 12px;
+}
+
+.note {
+    font-size: 15px;
+    line-height: 1.6;
+    opacity: 0.75;
+    margin-bottom: 16px;
+}
+
+.status {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.status--done {
+    background: rgba(45, 110, 106, 0.15);
+    color: var(--teal);
+}
+
+.card--main .status--done {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--cream);
+}
+
+.status--partial {
+    background: rgba(193, 74, 46, 0.1);
+    color: var(--terracotta);
+}
+
+/* Cursos complementarios */
+.courses {
+    margin-top: 16px;
+}
+
+.courses-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.4;
+    margin-bottom: 12px;
+    font-weight: 400;
+}
+
+.courses .card--small {
+    margin-bottom: 12px;
+    padding: 22px;
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .note {
+        font-size: 14px;
+    }
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 12px 0;
+
+    span {
+        font-family: var(--mono);
+        font-size: 9px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 3px 8px;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 12px;
+    }
+}
+
+.card--main .skills span {
+    border-color: rgba(255, 255, 255, 0.3);
+    color: var(--cream);
+}
+
+@media (max-width: 768px) {
+    .page {
+        padding: 32px 20px;
+    }
+
+    h1 {
+        font-size: 36px;
+        margin-bottom: 32px;
+    }
+
+    .card {
+        padding: 22px;
+    }
+
+    .card--main {
+        padding: 26px;
+    }
+
+    .card h2 {
+        font-size: 22px;
+    }
+
+    .card--main h2 {
+        font-size: 28px;
+    }
+
+    .card-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+}
