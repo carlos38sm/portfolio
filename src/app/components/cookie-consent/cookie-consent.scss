@@ -1,0 +1,71 @@
+.cookie-bento-box {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 380px;
+  background-color: #fff3dd; // El color crema de tu fondo
+  border: 1px solid #1e1e1e;
+  padding: 25px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: 10px 10px 0px #1e1e1e; // Sombra sólida tipo bento
+
+  .header {
+    display: flex;
+    gap: 10px;
+    .tag {
+      background-color: #ffda00; // Tu amarillo de acento
+      font-family: 'Azeret Mono', monospace;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 3px 8px;
+      border: 1px solid #1e1e1e;
+    }
+  }
+
+  .content p {
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 0;
+    color: #1e1e1e;
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+
+    button {
+      font-family: 'Azeret Mono', monospace;
+      font-size: 12px;
+      padding: 10px;
+      cursor: pointer;
+      border: 1px solid #1e1e1e;
+      font-weight: bold;
+      transition: all 0.2s ease;
+
+      &.btn-primary {
+        background-color: #1e1e1e;
+        color: #fff3dd;
+        &:hover { background-color: #ffda00; color: #1e1e1e; }
+      }
+
+      &.btn-secondary {
+        background-color: transparent;
+        color: #1e1e1e;
+        &:hover { background-color: #f0ead6; }
+      }
+    }
+  }
+}
+
+// Responsive para móvil
+@media (max-width: 480px) {
+  .cookie-bento-box {
+    width: calc(100% - 40px);
+    right: 20px;
+    bottom: 20px;
+  }
+}
