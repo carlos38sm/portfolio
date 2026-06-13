@@ -87,6 +87,16 @@
 }
 
 @media (max-width: 768px) {
-  .title { font-size: 42px; }
-  .wrapper { padding: 24px; }
+  .title { font-size: 36px; }
+
+  .wrapper {
+    padding: 20px;
+  }
+
+  .more {
+    position: static;
+    align-self: flex-end;
+    margin-top: 8px;
+    opacity: 0.6;
+  }
 }

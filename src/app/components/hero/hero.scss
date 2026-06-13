@@ -1,18 +1,21 @@
 :host {
   background: var(--bone);
-  padding: 32px;
+  padding: 48px 32px;
   display: flex !important;
-  flex-direction: row;
+  flex-direction: row !important;
   align-items: center;
   justify-content: space-between;
   gap: 48px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
-.kicker {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.3em;
-  opacity: 0.7;
+.content {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .name {
@@ -85,12 +88,13 @@
 }
 
 .about {
-  max-width: 320px;
-  flex-shrink: 0;
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-self: center;
+  align-items: flex-start;
+  padding-left: 10%;
+  max-width: 420px;
 }
 
 .about-text {
@@ -113,20 +117,33 @@
   font-style: italic;
 }
 
-/* TABLET */
 @media (max-width: 1024px) {
   .name { font-size: 90px; }
   .about { max-width: 260px; }
   .about-text { font-size: 16px; }
 }
 
-/* MÓVIL */
 @media (max-width: 768px) {
   :host {
     flex-direction: column !important;
-    align-items: flex-start;
-    gap: 24px;
-    padding: 32px 24px;
+    align-items: center;
+    gap: 32px;
+    padding: 48px 24px;
+    height: auto;
+    text-align: center;
+  }
+
+  .content {
+    width: 100%;
+    align-items: center;
+  }
+
+  .meta {
+    justify-content: center;
+  }
+
+  .social {
+    justify-content: center;
   }
 
   .name { font-size: 64px; }
@@ -134,7 +151,10 @@
 
   .about {
     max-width: 100%;
-    margin-left: 0;
+    padding-left: 0;
+    width: 100%;
+    align-items: center;
+    text-align: center;
   }
 }
 

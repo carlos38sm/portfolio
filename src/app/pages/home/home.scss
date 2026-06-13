@@ -22,9 +22,6 @@
 }
 
 .tile {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   overflow: hidden;
   border-radius: 2px;
   transition: transform 0.2s ease, box-shadow 0.3s ease;
@@ -55,7 +52,6 @@
 .tile--cv         { grid-area: cv; }
 .tile--experience { grid-area: exp; }
 
-/* TABLET */
 @media (max-width: 1024px) {
   .grid {
     grid-template-rows: auto;
@@ -68,7 +64,6 @@
   }
 }
 
-/* MÓVIL — una columna apilada */
 @media (max-width: 768px) {
   .grid {
     display: flex;
