@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, Renderer2, Inject } from '@angular/core';
+import { CommonModule, DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-cookie-consent',
@@ -10,6 +10,11 @@ import { CommonModule } from '@angular/common';
 })
 export class CookieConsentComponent implements OnInit {
   showBanner: boolean = false;
+
+  constructor(
+    private renderer: Renderer2, 
+    @Inject(DOCUMENT) private document: Document
+  ) {}
 
   ngOnInit() {
     const consent = localStorage.getItem('cookieConsent');
@@ -32,19 +37,22 @@ export class CookieConsentComponent implements OnInit {
   }
 
   private loadGA4() {
-    // Inyectamos el script de Google con tu ID real
-    const script1 = document.createElement('script');
-    script1.src = `https://www.googletagmanager.com/gtag/js?id=G-0HR8V9K382`;
-    script1.async = true;
-    document.head.appendChild(script1);
+    const script1 = this.renderer.createElement('script');
+    this.renderer.setAttribute(script1, 'src', 'https://www.googletagmanager.com/gtag/js?id=G-0HR8V9K382');
+    this.renderer.setAttribute(script1, 'async', 'true');
+    this.renderer.appendChild(this.document.head, script1);
 
-    const script2 = document.createElement('script');
-    script2.innerHTML = `
+    // 2. Script de configuración
+    const script2 = this.renderer.createElement('script');
+    const scriptText = this.renderer.createText(`
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-0HR8V9K382');
-    `;
-    document.head.appendChild(script2);
+    `);
+    this.renderer.appendChild(script2, scriptText);
+    this.renderer.appendChild(this.document.head, script2);
+    
+    console.log("Analytics cargado correctamente"); 
   }
 }
