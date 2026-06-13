@@ -34,7 +34,7 @@ export class CookieConsentComponent implements OnInit {
   private loadGA4() {
     // Inyectamos el script de Google con tu ID real
     const script1 = document.createElement('script');
-    script1.src = `https://www.googletagmanager.com/gtag/js?id=G-R8DYD36GGS`;
+    script1.src = `https://www.googletagmanager.com/gtag/js?id=G-0HR8V9K382`;
     script1.async = true;
     document.head.appendChild(script1);
 
@@ -43,7 +43,7 @@ export class CookieConsentComponent implements OnInit {
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-R8DYD36GGS');
+      gtag('config', 'G-0HR8V9K382');
     `;
     document.head.appendChild(script2);
   }
