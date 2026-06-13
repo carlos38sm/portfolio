@@ -36,23 +36,19 @@ export class CookieConsentComponent implements OnInit {
     this.showBanner = false;
   }
 
-  private loadGA4() {
-    const script1 = this.renderer.createElement('script');
-    this.renderer.setAttribute(script1, 'src', 'https://www.googletagmanager.com/gtag/js?id=G-0HR8V9K382');
-    this.renderer.setAttribute(script1, 'async', 'true');
-    this.renderer.appendChild(this.document.head, script1);
+private loadGA4() {
+    const script = this.renderer.createElement('script');
+    this.renderer.setAttribute(script, 'src', 'https://www.googletagmanager.com/gtag/js?id=G-0HR8V9K382');
+    this.renderer.setAttribute(script, 'async', 'true');
+    this.renderer.appendChild(this.document.head, script);
 
-    // 2. Script de configuración
-    const script2 = this.renderer.createElement('script');
-    const scriptText = this.renderer.createText(`
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-0HR8V9K382');
-    `);
-    this.renderer.appendChild(script2, scriptText);
-    this.renderer.appendChild(this.document.head, script2);
+    const navWindow = window as any;
+    navWindow.dataLayer = navWindow.dataLayer || [];
+    navWindow.gtag = function() { navWindow.dataLayer.push(arguments); };
     
-    console.log("Analytics cargado correctamente"); 
+    navWindow.gtag('js', new Date());
+    navWindow.gtag('config', 'G-0HR8V9K382'); 
+    
+    console.log("Analytics ejecutado nativamente en Angular"); 
   }
 }
